@@ -1,0 +1,10 @@
+@import url('bootstrap.css');
+@import url('bootstrap-responsive.css');
+
+.unread td {
+  font-weight: bold;
+}
+
+.mail {
+  cursor: pointer;
+}
