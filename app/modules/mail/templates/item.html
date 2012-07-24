@@ -1,6 +1,6 @@
-<td class='check'><input type='checkbox'></td>
+<td class='select'><input type='checkbox' <%= selected ? 'checked' : '' %>></td>
 <td class='starred'><i class='icon-star<%= starred ? '' : '-empty' %>'></i></td>
 <td class='sender'><%= sender %></td>
 <td class='subject'><%= subject %></td>
-<td class='time'><%= time %></td>
+<td class='time'><%= moment(timestamp).format('MM/DD/YY') %></td>
 <td class='label'><%= label %></td>

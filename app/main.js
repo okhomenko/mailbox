@@ -1,4 +1,6 @@
 requirejs([
+  // Libs
+  'dispatcher',
 
   // Mock
   '../data/mockData',
@@ -8,17 +10,17 @@ requirejs([
   'modules/mail/views/list',
   'modules/mail/views/nav',
 
-], function (Data, Collection, ListView, NavView) {
+], function (Dispatcher, Data, Collection, ListView, NavView) {
 
   'use strict';
 
-  var collection = new Collection(Data);
+  var collection = window.collection = new Collection(Data);
 
-  var view = new ListView({
+  var view = window.view = new ListView({
     collection: collection
   });
 
-  view.renderAll(function (el) {
+  view.render(function (el) {
     $('#content').html(el);
   });
 
@@ -26,7 +28,8 @@ requirejs([
 
   side.render(function(el){
     $('#side').html(el);
+    Dispatcher.trigger('mails:reset', collection);
+    Dispatcher.trigger('mails:renderInbox', collection);
   });
-
 
 });

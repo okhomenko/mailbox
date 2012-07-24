@@ -2,11 +2,12 @@ define([
 
   // Libs
   'backbone',
+  'dispatcher',
 
   // Deps
   './item'
 
-], function (Backbone, ItemView) {
+], function (Backbone, Dispatcher, ItemView) {
 
   'use strict';
 
@@ -15,13 +16,13 @@ define([
     tagName: 'table',
     className: 'table table-striped table-bordered',
     
-
-    renderAll: function (done) {
-      var _this = this;
-
-      this.collection.each(function(model) {
-        _this.renderOne(model);
-      });
+    initialize: function () {
+      Dispatcher.on('mails:renderInbox', this.renderInbox, this);
+      Dispatcher.on('mails:renderStarred', this.renderStarred, this);
+      Dispatcher.on('mails:renderAll', this.renderAll, this);
+    },
+    
+    render: function (done) {
 
       if (_.isFunction(done)) {
         done(this.el);
@@ -30,7 +31,16 @@ define([
       return this;
     },
 
-    renderOne: function (model) {
+    renderCollection: function (collection) {
+      var _this = this;
+      this.$el.empty();
+
+      collection.each(function(model) {
+        _this.renderModel(model);
+      });
+    },
+
+    renderModel: function (model) {
       var _this = this;
       var view = new ItemView({
         model: model
@@ -39,7 +49,24 @@ define([
       view.render(function(el) {
         _this.$el.append(el);
       });
+    },
+
+    renderInbox: function () {
+      var inbox = _(this.collection.getInbox());
+
+      this.renderCollection(inbox);
+    },
+
+    renderStarred: function () {
+      var starred = _(this.collection.getStarred());
+
+      this.renderCollection(starred);
+    },
+
+    renderAll: function () {
+      this.renderCollection(this.collection);
     }
+
   });
 
   return View;

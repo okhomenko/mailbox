@@ -1,38 +1,45 @@
 define([
   // Libs
   'backbone',
+  'moment',
   'dispatcher'
 
-], function (Backbone, Dispatcher) {
+], function (Backbone, Moment, Dispatcher) {
 
   'use strict';
 
   var Model = Backbone.Model.extend({
 
     defaults: {
-      starred: false,
       label: '',
-      read: false
+      starred: false,
+      read: false,
+      selected: false,
+      archived: false
     },
 
     initialize: function () {
-      this.set('time', this.formatDate(this.get('timestamp')));
       this.on('change', this.triggerGlobally);
     },
 
-    formatDate: function (date) {
-      var d, currDate, currMonth, currYear;
+    updateRead: function () {
+      this.set({'read': true});
+    },
 
-      d = new Date(date);
-      currDate = d.getDate();
-      currMonth = d.getMonth() + 1; // Months start from 0
-      currYear = d.getFullYear();
+    updateStarred: function () {
+      this.set({'starred': !this.get('starred')});
+    },
 
-      return [currDate, currMonth, currYear].join('-');
+    updateSelected: function () {
+      this.save({'selected': true});
+    },
+
+    updateArchived: function () {
+      this.save({'archived': true});
     },
 
     triggerGlobally: function () {
-      Dispatcher.trigger('mail:change', this);
+      Dispatcher.trigger('mail:change', this.collection);
     }
 
   });

@@ -1,11 +1,12 @@
 define([
   // Libs
   'backbone',
+  'moment',
 
   // Deps
   'text!../templates/item.html'
 
-], function (Backbone, Template) {
+], function (Backbone, Moment, Template) {
 
   'use strict';
 
@@ -17,10 +18,9 @@ define([
     template: _.template(Template),
 
     events: {
-      'click .starred': 'updateStarred',
-      'click .sender': 'updateRead',
-      'click .subject': 'updateRead',
-      'click .time': 'updateRead',
+      'click .sender, .subject, .time' : 'updateRead',
+      'click .starred'                 : 'updateStarred',
+      'click .select'                  : 'updateSelected'
     },
 
     initialize: function () {
@@ -44,11 +44,15 @@ define([
     },
 
     updateStarred: function () {
-      this.model.set('starred', !this.model.get('starred'));
+      this.model.updateStarred();
     },
 
     updateRead: function () {
-      this.model.set('read', true);
+      this.model.updateRead();
+    },
+
+    updateSelected: function () {
+      this.model.updateSelected();
     }
     
   });

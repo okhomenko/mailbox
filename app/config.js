@@ -11,12 +11,13 @@
     paths: {
       // Paths
       'libs': '../assets/js/libs',
-      'plugins': '../assets/js/plugins',
+      'plugs': '../assets/js/plugins',
 
       // Libs
       'jquery': '../assets/js/libs/jquery',
       'underscore': '../assets/js/libs/lodash',
       'backbone': '../assets/js/libs/backbone',
+      'moment': '../assets/js/libs/moment',
 
       // Plugins
       'backbone.localstorage': '../assets/js/plugins/backbone.localstorage',
