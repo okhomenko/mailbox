@@ -1,6 +1,8 @@
-<td class='select'><input type='checkbox' <%= selected ? 'checked' : '' %>></td>
-<td class='starred'><i class='icon-star<%= starred ? '' : '-empty' %>'></i></td>
-<td class='sender'><%= sender %></td>
+<td class='select' width='5%'><input type='checkbox' <%= selected ? 'checked' : '' %>></td>
+<td class='starred' width='5%'><i class='icon-star<%= starred ? '' : '-empty' %>'></i></td>
+<td class='sender' width='20%'><%= sender %></td>
 <td class='subject'><%= subject %></td>
-<td class='time'><%= moment(timestamp).format('MM/DD/YY') %></td>
-<td class='label'><%= label %></td>
+<td class='time' width='10%'><%= moment(timestamp).format('MM/DD/YY') %></td>
+<td class='labeltd' width='10%'>
+  <span class='<%= label !== '' ? 'label label-success' : ''%>'><%= label %></span>
+</td>

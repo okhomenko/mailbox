@@ -13,9 +13,12 @@ define([
 
   var Collection = Backbone.Collection.extend({
     model: Model,
+    url: '/data/mockData.js',
+    //localStorage: new Backbone.LocalStorage('mails'),
 
     initialize: function () {
-
+      var _this = this;
+      this.on('reset', this.triggerGloballyReset);
     },
 
     comparator: function(model) {
@@ -54,6 +57,11 @@ define([
 
     getStarredCount: function () {
       return this.getStarred().length;
+    },
+
+    triggerGloballyReset: function () {
+      Dispatcher.trigger('mails:reset', this);
+      Dispatcher.trigger('mails:renderInbox', this);
     }
 
   });

@@ -12,8 +12,9 @@ define([
 
   var View = Backbone.View.extend({
 
-    tagName: 'ul',
-    className: 'mod modMailbox sideNav nav nav-list',
+    tagName: 'div',
+    //className: 'mod modMailbox sideNav nav nav-list',
+    className: 'mod modMailbox tabbable tabs-left',
 
     template: _.template(Template),
 

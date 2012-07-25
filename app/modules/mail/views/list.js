@@ -14,12 +14,13 @@ define([
   var View = Backbone.View.extend({
 
     tagName: 'table',
-    className: 'table table-striped table-bordered',
+    className: 'table table-striped',
     
     initialize: function () {
-      Dispatcher.on('mails:renderInbox', this.renderInbox, this);
-      Dispatcher.on('mails:renderStarred', this.renderStarred, this);
-      Dispatcher.on('mails:renderAll', this.renderAll, this);
+      _.bindAll(this);
+      Dispatcher.on('mails:renderInbox', this.renderInbox);
+      Dispatcher.on('mails:renderStarred', this.renderStarred);
+      Dispatcher.on('mails:renderAll', this.renderAll);
     },
     
     render: function (done) {

@@ -4,7 +4,7 @@
 
   requirejs.config({
 
-    deps: ['main'],
+    deps: ['backbone.localstorage', 'bootstrap', 'main'],
 
     urlArgs: "bust=" +  (new Date()).getTime(),
 
@@ -18,6 +18,7 @@
       'underscore': '../assets/js/libs/lodash',
       'backbone': '../assets/js/libs/backbone',
       'moment': '../assets/js/libs/moment',
+      'bootstrap': '../assets/js/libs/bootstrap',
 
       // Plugins
       'backbone.localstorage': '../assets/js/plugins/backbone.localstorage',
