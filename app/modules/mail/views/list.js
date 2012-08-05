@@ -11,7 +11,7 @@ define([
 
   'use strict';
 
-  var View = Backbone.View.extend({
+  return Backbone.View.extend({
 
     tagName: 'table',
     className: 'table table-striped',
@@ -69,8 +69,6 @@ define([
     }
 
   });
-
-  return View;
 
 });
 

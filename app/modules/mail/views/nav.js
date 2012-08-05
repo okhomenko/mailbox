@@ -10,7 +10,7 @@ define([
 
   'use strict';
 
-  var View = Backbone.View.extend({
+  return Backbone.View.extend({
 
     tagName: 'div',
     //className: 'mod modMailbox sideNav nav nav-list',
@@ -21,7 +21,7 @@ define([
     events: {
       'click .inbox'   : 'triggerRenderInbox',
       'click .starred' : 'triggerRenderStarred',
-      'click .all'     : 'triggerRenderAll',
+      'click .all'     : 'triggerRenderAll'
     },
 
     initialize: function () {
@@ -115,7 +115,5 @@ define([
 
 
   });
-
-  return View;
 
 });

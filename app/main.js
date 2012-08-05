@@ -6,7 +6,7 @@ requirejs([
   'modules/mail/collections/mails',
   'modules/mail/views/list',
   'modules/mail/views/nav',
-  'modules/mail/views/actions',
+  'modules/mail/views/actions'
 
 ], function (Dispatcher, Collection, ListView, NavView, ActionsView) {
 

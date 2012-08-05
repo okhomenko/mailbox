@@ -11,13 +11,12 @@ define([
 
   'use strict';
 
-  var Collection = Backbone.Collection.extend({
+  return Backbone.Collection.extend({
     model: Model,
     url: '/data/mockData.js',
     //localStorage: new Backbone.LocalStorage('mails'),
 
     initialize: function () {
-      var _this = this;
       this.on('reset', this.triggerGloballyReset);
     },
 
@@ -65,7 +64,5 @@ define([
     }
 
   });
-
-  return Collection;
 
 });

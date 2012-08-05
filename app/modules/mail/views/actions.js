@@ -6,7 +6,7 @@ define([
   'text!../templates/actions.html'
 ], function (Backbone, Template) {
 
-  var View = Backbone.View.extend({
+  return Backbone.View.extend({
 
     template: _.template(Template),
 
@@ -23,7 +23,5 @@ define([
     
 
   });
-
-  return View;
 
 });
