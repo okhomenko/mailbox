@@ -10,7 +10,7 @@ define([
 
   'use strict';
 
-  var View = Backbone.View.extend({
+  return Backbone.View.extend({
 
     tagName: 'tr',
     className: 'mail',
@@ -56,7 +56,5 @@ define([
     }
     
   });
-
-  return View;
 
 });

@@ -8,14 +8,14 @@ define([
 
   'use strict';
 
-  var Model = Backbone.Model.extend({
+  return Backbone.Model.extend({
 
     defaults: {
       label: '',
       starred: false,
       read: false,
       selected: false,
-      archived: false,
+      archived: false
     },
 
     initialize: function () {
@@ -47,7 +47,5 @@ define([
     }
 
   });
-
-  return Model;
 
 });
